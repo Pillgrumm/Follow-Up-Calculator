@@ -5,11 +5,7 @@ function addBusinessDays(date, days) {
   while (added < days) {
     result.setDate(result.getDate() + 1);
     const day = result.getDay();
-
-    // 0 = Sunday, 6 = Saturday
-    if (day !== 0 && day !== 6) {
-      added++;
-    }
+    if (day !== 0 && day !== 6) added++;
   }
 
   return result;
@@ -24,26 +20,28 @@ function formatDate(date) {
   });
 }
 
-function calculateSchedule() {
+function calculate() {
   const input = document.getElementById("startDate").value;
   if (!input) return;
 
   const start = new Date(input);
 
-  const schedule = {
-    followUp1: addBusinessDays(start, 4),
-    followUp2: addBusinessDays(start, 7),
-    followUp3: addBusinessDays(start, 10),
-    escalate: addBusinessDays(start, 11)
-  };
+  const f1 = addBusinessDays(start, 4);
+  const f2 = addBusinessDays(start, 7);
+  const f3 = addBusinessDays(start, 10);
+  const esc = addBusinessDays(start, 11);
 
-  document.getElementById("output").innerHTML = `
-    <div class="row"><b>Follow-up #1 (BD 4):</b> ${formatDate(schedule.followUp1)}</div>
-    <div class="row"><b>Follow-up #2 (BD 7):</b> ${formatDate(schedule.followUp2)}</div>
-    <div class="row"><b>Follow-up #3 (BD 10):</b> ${formatDate(schedule.followUp3)}</div>
-    <div class="row"><b>Escalate (BD 11):</b> ${formatDate(schedule.escalate)}</div>
-  `;
+  document.getElementById("output").value =
+`Follow-up #1 (BD 4): ${formatDate(f1)}
+Follow-up #2 (BD 7): ${formatDate(f2)}
+Follow-up #3 (BD 10): ${formatDate(f3)}
+Escalate (BD 11): ${formatDate(esc)}`;
 }
 
-document.getElementById("calculateBtn")
-  .addEventListener("click", calculateSchedule);
+function reset() {
+  document.getElementById("startDate").value = "";
+  document.getElementById("output").value = "";
+}
+
+document.getElementById("calculateBtn").addEventListener("click", calculate);
+document.getElementById("resetBtn").addEventListener("click", reset);

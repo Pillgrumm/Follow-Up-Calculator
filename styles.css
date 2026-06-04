@@ -1,45 +1,118 @@
 body {
-  font-family: Arial, sans-serif;
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 20px;
-  background: #fff;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
+/* Container matches your system exactly */
 .container {
-  width: 100%;
+    width: 90%;
+    max-width: 600px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
 }
 
 h1 {
-  font-size: 22px;
+    margin-bottom: 20px;
+    color: #555;
 }
 
-label {
-  display: block;
-  margin-top: 20px;
-  font-weight: bold;
+/* Date input styled to match textarea vibe */
+input[type="date"] {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-input {
-  padding: 10px;
-  margin-top: 8px;
-  width: 100%;
-  box-sizing: border-box;
+input[type="date"]:focus {
+    border-color: #7c7cfc;
+    outline: none;
+    box-shadow: inset 0 0 5px rgba(124, 124, 252, 0.5);
+}
+
+textarea {
+    width: 100%;
+    height: 140px;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: none;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+textarea:focus {
+    border-color: #7c7cfc;
+    outline: none;
+    box-shadow: inset 0 0 5px rgba(124, 124, 252, 0.5);
+}
+
+/* Same button system as your app */
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
 }
 
 button {
-  margin-top: 20px;
-  padding: 10px 15px;
-  cursor: pointer;
+    flex: 1 1 30%;
+    padding: 10px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #7c7cfc;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.result {
-  margin-top: 30px;
-  padding: 15px;
-  background: #f4f4f4;
-  border-radius: 6px;
+button:hover {
+    background-color: #6363d6;
 }
 
-.row {
-  margin-bottom: 10px;
+/* Footer exactly matching your pattern */
+.footer {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+}
+
+.footer-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-icon {
+    color: aliceblue;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-icon:hover {
+    color: #81c784;
+}
+
+.footer-icon i {
+    font-size: 2rem;
 }
