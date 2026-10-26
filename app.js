@@ -20,22 +20,24 @@ function formatDate(date) {
   });
 }
 
+function parseLocalDate(value) {
+  const [year, month, day] = value.split("-").map(Number);
+  return new Date(year, month - 1, day);
+}
+
 function calculate() {
   const input = document.getElementById("startDate").value;
   if (!input) return;
 
-  const start = new Date(input);
+  const start = parseLocalDate(input);
 
-  const f1 = addBusinessDays(start, 4);
-  const f2 = addBusinessDays(start, 7);
-  const f3 = addBusinessDays(start, 10);
-  const esc = addBusinessDays(start, 11);
+  // 48 hours = 2 business days, 72 hours = 3. Weekends are not counted.
+  const followUp = addBusinessDays(start, 2);
+  const escalate = addBusinessDays(start, 3);
 
   document.getElementById("output").value =
-`Follow-up #1 (BD 4): ${formatDate(f1)}
-Follow-up #2 (BD 7): ${formatDate(f2)}
-Follow-up #3 (BD 10): ${formatDate(f3)}
-Escalate (BD 11): ${formatDate(esc)}`;
+`Follow-up (within 48 hours): ${formatDate(followUp)}
+Escalate (at 72 hours): ${formatDate(escalate)}`;
 }
 
 function reset() {
